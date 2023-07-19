@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gestion d'accès</title>
+</head>
+<body>
+    <h1>Gestion d'accès</h1>
+    <table>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Rôle actuel</th>
+            <th>Changer de rôle</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.nom }}</td>
+            <td>{{ user.prenom }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role_id }}</td>
+            <td>
+                <form method="POST">
+                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                    <select name="new_role">
+                        <option value="1">1 - Administrateur</option>
+                        <option value="2">2 - Utilisateur</option>
+                        <option value="3">3 - Bloqué</option>
+                    </select>
+                    <button type="submit">Modifier</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <button onclick="window.location.href='/home'">Retourner à la page d'accueil</button>
+</body>
+</html>

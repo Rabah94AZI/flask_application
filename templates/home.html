@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page d'accueil</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Bienvenue sur la page d'accueil !</h1>
+    {% if 'role_id' in session and session['role_id'] == 1 %}
+        <button onclick="window.location.href='/manage_access'">Gestion d'accès</button>
+    {% endif %}
+    <button onclick="window.location.href='/logout'">Se déconnecter</button>
+
+    <!-- Formulaire pour choisir le produit -->
+    <form method="post">
+        <select name="product">
+            {% for product_name in product_names %}
+                <option value="{{ product_name }}">{{ product_name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Afficher le graphique">
+    </form>
+
+    <!-- Si le diagramme en secteurs est défini, l'afficher -->
+    {% if pie_chart_div is defined %}
+        <div id="pie-chart">{{ pie_chart_div | safe }}</div>
+    {% endif %}
+
+    <!-- Si le histogramme est défini, l'afficher -->
+    {% if histogram_div is defined %}
+        <div id="histogram">{{ histogram_div | safe }}</div>
+    {% endif %}
+
+    <!-- Si le graphique à barres est défini, l'afficher -->
+    {% if bar_chart_div is defined %}
+        <div id="bar-chart">{{ bar_chart_div | safe }}</div>
+    {% endif %}
+
+    <!-- Si la série chronologique est définie, l'afficher -->
+    {% if time_series_div is defined %}
+        <div id="time-series">{{ time_series_div | safe }}</div>
+    {% endif %}
+
+    <!-- Si le boxplot est défini, l'afficher -->
+    {% if boxplot_div is defined %}
+        <div id="boxplot">{{ boxplot_div | safe }}</div>
+    {% endif %}
+
+    <!-- Si le diagramme à bulles est défini, l'afficher -->
+    {% if bubble_chart_div is defined %}
+        <div id="bubble-chart">{{ bubble_chart_div | safe }}</div>
+    {% endif %}
+</body>
+</html>
