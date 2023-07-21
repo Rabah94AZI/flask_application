@@ -14,8 +14,8 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'parabah'
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:0000@localhost/data'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:00000000@data.ca08cjl2yaa1.us-east-1.rds.amazonaws.com/data'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:00000000@data.ca08cjl2yaa1.us-east-1.rds.amazonaws.com/data'
-
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
